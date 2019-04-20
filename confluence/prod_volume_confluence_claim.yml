@@ -1,12 +1,11 @@
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
-  name: nfsprodconfluence
-  namespace: production
+  name: confluence-pvc
 spec:
   accessModes:
-  - ReadWriteMany
-  storageClassName: ""
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 8Gi
+  storageClassName: gp2

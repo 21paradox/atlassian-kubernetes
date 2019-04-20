@@ -2,11 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: confluence-deployment
-  namespace: production
+  namespace: default
   labels:
     service: confluence
     app: confluence
-
 spec:
   replicas: 1
   selector:
@@ -30,8 +29,8 @@ spec:
             - containerPort: 8090
           volumeMounts:
           - mountPath: "/var/atlassian/application-data/confluence"
-            name: nfs
+            name: data
       volumes:
-      - name: nfs
+      - name: data
         persistentVolumeClaim:
-          claimName: nfsprodconfluence
+          claimName: confluence-pvc
